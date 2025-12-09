@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franz Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: rgb(216, 164, 19);
+    }
+
+    nav {
+        background-color: #1a1a1a;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    nav .logo {
+        font-size: 2em;
+        color: #ffcc33;
+        font-weight: bold;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: rgb(202, 31, 31);
+        font-size: 1.1em;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #ffcc33;
+    }
+
+    #logoutBtn {
+        color: rgba(255, 204, 35, 0.973) !important;
+        font-weight: bold;
+        display: none;
+    }
+
+    .home {
+        display: flex;
+        justify-content: space-between;
+        padding: 80px 50px;
+        gap: 20px;
+    }
+
+    .left {
+        max-width: 600px;
+    }
+
+    .left h1 {
+        font-size: 3rem;
+    }
+
+    .left h1 span {
+        color: #ffcc33;
+    }
+
+    .left h2 {
+        font-size: 2rem;
+        margin-top: 10px;
+        color: #ffcc33;
+    }
+
+    .left p {
+        margin-top: 15px;
+        color: #db2222;
+        font-size: 1.1rem;
+    }
+
+    .socials {
+        margin-top: 25px;
+    }
+
+    .socials a {
+        color: rgb(255, 197, 36);
+        font-size: 1.6em;
+        margin-right: 15px;
+        text-decoration: none;
+    }
+
+    .socials a:hover {
+        color: #ffcc33;
+    }
+
+    .right .circle {
+        width: 320px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 8px solid #ffcc33;
+    }
+
+    .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .about {
+        padding: 80px 60px;
+        background-color: #1a1a1a;
+        text-align: center;
+    }
+
+    .about h2 {
+        color: #ffcc33;
+        font-size: 2.3rem;
+    }
+
+    .about p {
+        margin-top: 15px;
+        color: #ffc118;
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .projects {
+        padding: 60px 50px;
+        background-color: #1a1a1a;
+        text-align: center;
+    }
+
+    .projects h2 {
+        color: #ffcc33;
+        font-size: 2.3rem;
+        margin-bottom: 40px;
+    }
+
+    .projects-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .project-card {
+        background-color: #121212;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 350px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(255, 204, 51, 0.2);
+    }
+
+    .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        border: 2px solid #ffcc33;
+    }
+
+    .project-card h3 {
+        color: #ffcc33;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .project-card p {
+        color: #ddd;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .project-card a {
+        display: block;
+        margin-top: 15px;
+        color: #121212;
+        background-color: #ffcc33;
+        padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .project-card a:hover {
+        background-color: #e6b52f;
+    }
+
+    .contact {
+        padding: 60px 50px;
+        background-color: #1a1a1a;
+        text-align: center;
+    }
+
+    .contact h2 {
+        color: #ffcc33;
+        font-size: 2.3rem;
+    }
+
+    .contact-box {
+        margin-top: 20px;
+    }
+
+    .contact-box p {
+        font-size: 1.2rem;
+        color: #ddd;
+    }
+
+    .contact-box a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 25px;
+        background-color: #ffcc33;
+        color: #121212;
+        text-decoration: none;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .contact-box a:hover {
+        background-color: #e6b52f;
+    }
+
+    @media (max-width: 768px) {
+        .home {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .right {
+            margin-top: 30px;
+        }
+
+        .projects-grid {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    }
+</style>
+
+<nav>
+    <h2 class="logo">Franz Portfolio</h2>
+    <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="home">
+    <div class="left">
+        <h1>Hi, I'm <span>Franz Dave Arban</span></h1>
+        <h2>A student who want's to pursue cyber security</h2>
+        <p>Welcome to my Website portfolio! if you need anything feel free to contact me</p>
+
+        <div class="socials">
+            <a href="https://www.instagram.com/_frenxh24?igsh=MWRtaHZhZTluYXFvOQ==">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="circle">
+            <img src="my face.jpg" alt="Profile">
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+        My name is Franz Dave Arban, an 18-year-old first-year student taking the program Bachelor of Science in Information Technology (BSIT) at CARAGA State University - Cabadbaran Campus.
+        I am a proud graduate of Timamana National High School. My goal is to finish college education and to pursue Cyber Security.
+    </p>
+</section>
+
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <img src="pyhton game console.png" alt="Image of Project 1">
+            <h3>Who want's to be a billionaire game console using Python</h3>
+            <p>
+                It is developed usimg python language. The topic focuses specifically on ** Philippine History **
+                It has 4 levels of difficulties with questions designed to challenge players as they progress.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <img src="java game console.png" alt="Image of Project 2">
+            <h3>Who want's to be billionaire game console using Java</h3>
+            <p>
+                This project is a console based game but implemented using Java programming language. The game is built to test the player's knowledge about our ** Philippine History **
+                It has 4 levels of difficulties with questions designed to challenge players as they progress.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <img src="login page.png" alt="Image of Project 3">
+            <h3></h3>
+            <p>
+             Login page for user to enter their username and password before entering the website.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <div class="contact-box">
+        <p>Phone: <span style="color:#ffcc33;">09811538412</span></p>
+        <a href="https://www.facebook.com/share/1GCdHKXRPH/" target="_blank">My Facebook</a>
+    </div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
